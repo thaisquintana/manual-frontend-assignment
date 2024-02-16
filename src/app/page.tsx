@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import Script from 'next/script'
 
 export default function Home() {
-  const foo = 'bla'
   return (
     <main className={styles.main}>
       <div className={styles.description}>
