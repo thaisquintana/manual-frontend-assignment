@@ -18,12 +18,14 @@
         "name": "next"
       }
     ],
+    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
   "include": [
     ".jest/setup.ts",
+    "jest.config.js",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
