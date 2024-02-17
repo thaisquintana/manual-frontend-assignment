@@ -2,12 +2,11 @@
 
 import styled from 'styled-components'
 
-
-export const ButtonDanger = styled.button`
+export const SquareButton = styled.button<{ color: string }>`
   width: 156px;
   height: 45px;
   padding: 15px, 30px, 15px, 30px;
-  background-color: #7E0707;
+  background-color: ${(props) => props.color};
   margin-top: 20px;
   border: none;
   color: #fff;

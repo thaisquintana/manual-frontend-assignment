@@ -1,15 +1,9 @@
-import { ButtonDanger } from "./styles"
-
-export const Button = () => {
-  const handleClick = () => {
-    console.log('teste')
-  }
-
+import { SquareButton } from './styles'
+import { ButtonProps } from './types'
+export const Button = ({ color, onClick, text }: ButtonProps) => {
   return (
-<ButtonDanger onClick={handleClick}>
-    Take the quiz
-  </ButtonDanger>
-)
+    <SquareButton onClick={onClick} color={color}>
+      {text}
+    </SquareButton>
+  )
 }
-
-
