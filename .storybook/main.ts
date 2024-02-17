@@ -1,5 +1,3 @@
-import type { StorybookConfig } from '@storybook/nextjs'
-
 const config = {
   staticDirs: ['../public'],
   stories: ['../src/components/**/stories.tsx)'],
