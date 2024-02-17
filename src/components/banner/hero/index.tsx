@@ -1,3 +1,8 @@
 import { Content } from './styles'
 
-export const HeroBanner = () => <Content> Hero Banner </Content>
+export const HeroBanner = () => (
+  <Content>
+    {' '}
+    <h1>Hero Banner</h1>{' '}
+  </Content>
+)
