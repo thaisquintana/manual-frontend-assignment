@@ -7,6 +7,6 @@ describe('<HeroBanner />', () => {
     const { container } = render(<HeroBanner />)
 
     // verifica se o background-color está correto
-    expect(container.firstChild).toHaveStyle({ 'background-color': '#acc3a9' })
+    expect(container.firstChild).toHaveStyle({ 'background-color': '#a5b79f' })
   })
 })

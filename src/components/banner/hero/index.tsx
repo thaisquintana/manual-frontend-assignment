@@ -1,4 +1,3 @@
-import { Button } from '@/components/button'
 import { Content } from './styles'
 
 export const HeroBanner = () => (
@@ -10,7 +9,5 @@ export const HeroBanner = () => (
       We’re working around the clock to bring you a holistic <br /> approach to
       your wellness. From top to bottom, inside and <br /> out.
     </p>
-    <Button />
-
   </Content>
 )
