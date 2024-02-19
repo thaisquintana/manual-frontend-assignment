@@ -7,7 +7,6 @@ export const Header = () => (
       alt="Logo Manual"
       width={40}
       height={40}
-      priority
     />
   </HeaderContent>
 )

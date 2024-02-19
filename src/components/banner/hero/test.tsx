@@ -1,9 +1,10 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { HeroBanner } from '.'
 import userEvent from '@testing-library/user-event'
 
 describe('<HeroBanner />', () => {
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
+    const encodedUrl = encodeURIComponent('/assets/image-herobanner.webp')
     render(<HeroBanner />)
     expect(
       screen.getByRole('heading', { name: /Be good to yourself/i })
@@ -14,11 +15,16 @@ describe('<HeroBanner />', () => {
       )
     ).toBeInTheDocument()
     expect(screen.getByTestId('hero-content')).toHaveStyle({
-      'background-color': '#a5b79f'
+      background:
+        'conic-gradient(from 0.5turn at 50% 30%, #a5b7a1, 237deg, #9fb69c,#a7bea4, 289deg, #b4c8b1)'
     })
-    expect(screen.getByTestId('hero-content')).toHaveStyle({
-      'background-image': 'url("assets/image-herobanner.webp")'
+    await waitFor(() => {
+      expect(screen.getByRole('img')).toHaveAttribute(
+        'src',
+        `/_next/image?url=${encodedUrl}&w=3840&q=75`
+      )
     })
+
     const button = screen.getByText(/Take the quiz/i)
     userEvent.click(button)
   })
