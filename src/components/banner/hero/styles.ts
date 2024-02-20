@@ -2,7 +2,7 @@
 
 import styled from 'styled-components'
 
-export const HeroBannerBackDrop = styled.div`
+export const HeroBannerSection = styled.section`
   width: 100%;
   height: 615px;
   background-color: #9eb599;

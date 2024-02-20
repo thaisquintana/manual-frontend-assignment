@@ -1,7 +1,7 @@
 'use client'
 import { Button } from '@/components/button'
 import {
-  HeroBannerBackDrop,
+  HeroBannerSection,
   HeroBannerImage,
   HeroBannerContent,
   HeroBannerHolder
@@ -15,7 +15,7 @@ export const HeroBanner = (imageStyle: CSSProperties) => {
   }
 
   return (
-    <HeroBannerBackDrop data-testid="hero-content">
+    <HeroBannerSection data-testid="hero-content">
       <HeroBannerHolder>
         <HeroBannerImage>
           <Image
@@ -38,6 +38,6 @@ export const HeroBanner = (imageStyle: CSSProperties) => {
           <Button color="#7E0707" onClick={handleClick} text="Take the quiz" />
         </HeroBannerContent>
       </HeroBannerHolder>
-    </HeroBannerBackDrop>
+    </HeroBannerSection>
   )
 }
