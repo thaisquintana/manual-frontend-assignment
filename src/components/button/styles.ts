@@ -21,7 +21,11 @@ export const SquareButton = styled.button<{ color: string }>`
     filter: saturate(180%);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     width: 50%;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 15px 29px;
   }
 `

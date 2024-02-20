@@ -27,11 +27,6 @@ export const HeroBannerBackDrop = styled.div`
       #b4c8b1
     );
   }
-
-  @media (min-width: 1200px) {
-    height: 100%;
-    max-height: 750px;
-  }
 `
 
 export const HeroBannerHolder = styled.div`
@@ -42,7 +37,7 @@ export const HeroBannerHolder = styled.div`
     flex-direction: initial;
   }
 
-  @media (min-width: 1920px) {
+  @media (min-width: 1441px) {
     display: flex;
     justify-content: center;
     max-width: 1440px;
@@ -65,7 +60,7 @@ export const HeroBannerContent = styled.div`
   display: flex;
   flex-direction: column;
   height: auto;
-  gap: 20px;
+  gap: 10px;
   padding: 120px 40px 0;
   font-family: 'TT Norms Regular';
   color: #0b3b3c;
@@ -83,6 +78,9 @@ export const HeroBannerContent = styled.div`
     line-height: 30px;
     margin-top: 30px;
     letter-spacing: 0.2px;
+    br {
+      display: none;
+    }
   }
 
   button {
@@ -95,6 +93,7 @@ export const HeroBannerContent = styled.div`
     top: 100px;
     padding: 0;
     width: 46%;
+    gap: 20px;
 
     h1 {
       font-size: 50px;
@@ -114,8 +113,7 @@ export const HeroBannerContent = styled.div`
 
   @media (min-width: 992px) {
     top: 120px;
-    gap: 10px;
-
+    gap: 5px;
     h1 {
       font-size: 90px;
       line-height: 90px;
@@ -123,6 +121,9 @@ export const HeroBannerContent = styled.div`
     p {
       line-height: 30px;
       margin-top: 30px;
+      br {
+        display: block;
+      }
     }
 
     button {
@@ -130,7 +131,22 @@ export const HeroBannerContent = styled.div`
     }
   }
 
+  @media (min-width: 1200px) {
+    gap: 20px;
+    width: 440px;
+    left: 138px;
+    top: 176px;
+
+    p {
+      margin-top: 0;
+    }
+
+    button {
+      margin-top: 20px;
+    }
+  }
+
   @media (min-width: 1920px) {
-    left: 239px;
+    left: 280px;
   }
 `

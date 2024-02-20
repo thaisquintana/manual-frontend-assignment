@@ -32,8 +32,8 @@ export const HeroBanner = (imageStyle: CSSProperties) => {
             Be good <br /> to yourself
           </h1>
           <p>
-            We’re working around the clock to bring you a holistic approach to
-            your wellness. From top to bottom, inside and out.
+            We’re working around the clock to bring you a holistic <br />{' '}
+            approach to your wellness. From top to bottom, inside and out.
           </p>
           <Button color="#7E0707" onClick={handleClick} text="Take the quiz" />
         </HeroBannerContent>
