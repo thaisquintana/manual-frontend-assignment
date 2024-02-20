@@ -24,6 +24,7 @@ export const HeroBanner = (imageStyle: CSSProperties) => {
             width={1440}
             height={750}
             style={imageStyle}
+            priority
           />
         </HeroBannerImage>
         <HeroBannerContent>

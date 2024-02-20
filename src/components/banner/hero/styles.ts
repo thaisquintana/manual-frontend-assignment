@@ -14,8 +14,8 @@ export const HeroBannerBackDrop = styled.div`
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
+    height: auto;
     width: 100%;
-    height: 750px;
     align-items: baseline;
     background: conic-gradient(
       from 0.5turn at 50% 30%,
@@ -27,11 +27,20 @@ export const HeroBannerBackDrop = styled.div`
       #b4c8b1
     );
   }
+
+  @media (min-width: 1200px) {
+    height: 100%;
+    max-height: 750px;
+  }
 `
 
 export const HeroBannerHolder = styled.div`
   display: flex;
   flex-direction: column-reverse;
+
+  @media (min-width: 768px) {
+    flex-direction: initial;
+  }
 
   @media (min-width: 1920px) {
     display: flex;
@@ -45,18 +54,19 @@ export const HeroBannerHolder = styled.div`
 export const HeroBannerImage = styled.div`
   img {
     width: 100%;
-    height: auto;
-  }
-
-  @media (min-width: 768px) {
-    order: 2;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
   }
 `
 
 export const HeroBannerContent = styled.div`
   width: 100%;
-  // height: auto;
-  padding: 120px 40px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  gap: 20px;
+  padding: 120px 40px 0;
   font-family: 'TT Norms Regular';
   color: #0b3b3c;
 
@@ -79,83 +89,48 @@ export const HeroBannerContent = styled.div`
     margin-top: 40px;
   }
 
-  // @media (min-width: 320px) {
-  //   background-image: url('assets/image-herobanner.webp');
-  //   background-size: cover;
-  //   background-position: center bottom;
-  //   background-repeat: no-repeat;
-  // }
-
-  @media (min-width: 450px) {
-    // background-size: calc(100% / 2);
+  @media (min-width: 768px) {
+    position: absolute;
+    left: 40px;
+    top: 100px;
+    padding: 0;
+    width: 46%;
 
     h1 {
       font-size: 50px;
-      line-height: 50px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    // padding: 103px 0 0 40px;
-    // background-size: contain;
-    // background-position: right bottom;
-    order: 1;
-    position: absolute;
-    left: 98px;
-    top: 56px;
-
-    h1 {
-      font-size: 60px;
-      line-height: 50px;
+      line-height: 45px;
       br {
         display: block;
       }
     }
     p {
-      font-size: 18px;
       line-height: normal;
-      width: 46%;
+      margin-top: 10px;
     }
     button {
-      margin-bottom: 32px;
+      margin-top: 10px;
     }
   }
 
-  @media (min-width: 992px) and (max-width: 1440px) {
-    // background-image: url('assets/image-herobanner.webp');
-    // background-size: contain;
-    // background-position: right;
-    // padding: 189px 0 0 138px;
-    // height: 750px;
+  @media (min-width: 992px) {
+    top: 120px;
+    gap: 10px;
+
     h1 {
       font-size: 90px;
       line-height: 90px;
     }
     p {
-      width: 37%;
       line-height: 30px;
+      margin-top: 30px;
     }
 
     button {
       margin-top: 30px;
-      margin-bottom: 0;
     }
   }
 
   @media (min-width: 1920px) {
-    padding-top: 189px;
-    padding-left: 40px;
-    max-width: 1440px;
-    margin: 0 auto;
-    height: 750px;
-    left: 240px;
-    h1 {
-      width: 23%;
-      line-height: 60px;
-    }
-    p {
-      width: 36%;
-      line-height: 30px;
-    }
+    left: 239px;
   }
 `

@@ -4,8 +4,7 @@ import styled from 'styled-components'
 
 export const SquareButton = styled.button<{ color: string }>`
   width: 100%;
-  height: 45px;
-  padding: 15px, 30px, 15px, 30px;
+  padding: 15px 30px;
   background-color: ${(props) => props.color};
   border: none;
   color: #fff;
@@ -22,7 +21,7 @@ export const SquareButton = styled.button<{ color: string }>`
     filter: saturate(180%);
   }
 
-  @media (min-width: 768px) {
-    width: 156px;
+  @media (min-width: 1024px) {
+    width: 50%;
   }
 `

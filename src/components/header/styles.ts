@@ -7,7 +7,7 @@ export const HeaderContent = styled.div`
   top: 30px;
   left: 40px;
 
-  @media (min-width: 992px) {
+  @media (min-width: 1200px) {
     left: 138px;
   }
 
