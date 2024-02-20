@@ -2,7 +2,7 @@
 
 import styled from 'styled-components'
 
-export const HeaderContent = styled.div`
+export const HeaderContent = styled.header`
   position: absolute;
   top: 30px;
   left: 40px;

@@ -1,5 +1,6 @@
 import { HeroBanner } from '@/components/banner/hero'
 import { InfoBanner } from '@/components/banner/info'
+import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
         numberSection={'02'}
         direction={'right'}
       />
+      <Footer />
     </>
   )
 }
