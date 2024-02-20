@@ -4,35 +4,57 @@ import styled from 'styled-components'
 
 export const FooterContent = styled.footer`
   width: 100%;
-  height: 440px;
+  height: auto;
   background-color: #e8efe9;
-  display: flex;
-  flex-direction: column;
   font-family: TT Norms Regular;
   font-weight: 400;
-  justify-content: end;
+
+  @media (min-width: 768px) {
+    height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
 `
 
 export const FooterFeatures = styled.div`
   margin: 0 auto;
-  max-width: 1440px;
-  width: 1164px;
-  height: 251px;
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  height: auto;
+
+  @media (min-width: 768px) {
+    max-width: 1440px;
+    width: 680px;
+    height: 251px;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1164px;
+    gap: 0;
+  }
 `
 
 export const FooterLogo = styled.div`
-  width: 50%;
+  width: 100%;
+  text-align: center;
+  padding: 40px 0;
+
+  @media (min-width: 768px) {
+    width: 25%;
+    padding: 0;
+  }
+
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
 `
 
 export const FooterFeaturesList = styled.section`
-  width: 771px;
-  display: flex;
-  justify-content: space-between;
-  height: 215px;
-  align-items: baseline;
-  gap: 25px;
+  width: 100%;
+  text-align: center;
 
   label {
     font-family: TT Norms Bold;
@@ -40,21 +62,34 @@ export const FooterFeaturesList = styled.section`
     font-weight: 700;
     line-height: 15px;
     letter-spacing: 0.15px;
-    text-align: left;
     text-transform: uppercase;
     color: #0b3b3c;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
   }
 `
 
 export const FeatureList = styled.ul`
   list-style: none;
-  padding-left: 0;
-  padding-top: 20px;
+  padding: 10px 0 40px;
+
+  @media (min-width: 768px) {
+    padding: 20px 0 0 0;
+  }
 `
 
 export const FeatureListSocial = styled(FeatureList)`
   display: flex;
   gap: 20px;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    justify-content: initial;
+  }
 `
 
 export const FeatureListItem = styled.li`
@@ -63,13 +98,16 @@ export const FeatureListItem = styled.li`
   font-weight: 400;
   line-height: 40px;
   letter-spacing: 0.3px;
-  text-align: left;
+  text-align: center;
   color: #0b3b3c;
+
+  @media (min-width: 768px) {
+    text-align: left;
+  }
 `
 
 export const FooterWaterMark = styled.div`
   margin: 0 auto;
-  max-width: 1440px;
   width: 100%;
   height: 80px;
   display: flex;
@@ -79,14 +117,32 @@ export const FooterWaterMark = styled.div`
 
   hr {
     border: 1px solid #bdcdc5;
-    width: 1164px;
     margin: 0 auto;
+    width: 80%;
   }
 
   p {
     margin: 20px 0;
     color: #6d8a83;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 30px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 1440px;
+
+    hr {
+      width: 680px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    hr {
+      width: 1164px;
+    }
   }
 `
