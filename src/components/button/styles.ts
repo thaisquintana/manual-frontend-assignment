@@ -25,7 +25,9 @@ export const SquareButton = styled.button<{ color: string }>`
     width: 50%;
   }
 
-  @media (min-width: 1440px) {
-    padding: 15px 29px;
+  @media (min-width: 1200px) {
+    width: 156px;
+    height: 45px;
+    padding: 0;
   }
 `
