@@ -9,5 +9,5 @@ export type InfoBannerProps = {
   subtitle: string
   text: string
   direction: string
-  imageStyle: CSSProperties
+  imageStyle?: CSSProperties
 }

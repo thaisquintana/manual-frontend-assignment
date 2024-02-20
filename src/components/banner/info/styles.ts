@@ -37,6 +37,13 @@ export const InfoBannerContent = styled.div`
     max-width: 1440px;
     margin: 0 auto;
   }
+
+  @media (min-width: 1920px) {
+    h2 {
+      margin-top: 0;
+      margin-bottom: 40px;
+    }
+  }
 `
 
 export const InfoBannerContentDetails = styled.div`
@@ -50,6 +57,10 @@ export const InfoBannerContentDetails = styled.div`
   }
   @media (min-width: 1441px) {
     padding: 100px 0 0 324px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 0;
   }
 `
 
@@ -82,19 +93,18 @@ export const InfoBannerCoverText = styled.div<{ direction: string }>`
   display: none;
 
   @media (min-width: 992px) {
-    display: flex;
+    display: block;
     position: relative;
     left: -100px;
     z-index: 0;
     p {
       text-align: left;
       font-family: TT Norms Regular;
-      font-size: 66px;
+      font-size: 450px;
       color: #f3f7f4;
       font-weight: 600;
       letter-spacing: 0.3px;
     }
-    font-size: 450px;
     z-index: -1;
     left: ${(props) => (props.direction === 'left' ? '-79px' : '89px')};
     order: ${(props) => (props.direction === 'left' ? 2 : 1)};
