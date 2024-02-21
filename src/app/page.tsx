@@ -1,18 +1,34 @@
 'use client'
 
+import { useQuery } from 'react-query'
 import { HeroBanner } from '@/components/banner/hero'
 import { InfoBanner } from '@/components/banner/info'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { ModalFullScreen } from '@/components/modal/modalFullScreen'
 import { useState } from 'react'
+import { CardQuestion } from '@/components/quiz/cardQuestion'
+import { QuizProps } from '@/types'
 
 export default function Home() {
+  const [enabled] = useState(false)
   const [showModal, setShowModal] = useState<boolean>(false)
+  const [questions, setQuestions] = useState<QuizProps>()
+  const [currentQuestion] = useState<number>(0)
+  const [showResult] = useState()
 
   const handleShowModal = () => {
     setShowModal(true)
   }
+
+  const { refetch } = useQuery({
+    queryFn: async () => {
+      enabled
+      const response = await fetch('http://localhost:3333/questions')
+      const data = await response.json()
+      return setQuestions(data)
+    }
+  })
 
   const closeModal = () => {
     setShowModal(false)
@@ -21,10 +37,22 @@ export default function Home() {
   return (
     <>
       {showModal && (
-        <ModalFullScreen showHeader cancelButton={() => closeModal()} />
+        <ModalFullScreen showHeader cancelButton={() => closeModal()}>
+          <div>
+            {!showResult ? (
+              <CardQuestion
+                question={questions?.[currentQuestion].question}
+                type={questions?.[currentQuestion].type}
+                options={questions?.[currentQuestion].options}
+              />
+            ) : (
+              <div>show questions</div>
+            )}
+          </div>
+        </ModalFullScreen>
       )}
       <Header />
-      <HeroBanner onClick={() => handleShowModal()} />
+      <HeroBanner onClick={() => [handleShowModal(), () => refetch()]} />
       <InfoBanner
         sectionName={'Hair loss'}
         subtitle={'Hair loss needn’t be irreversible. We can help!'}
