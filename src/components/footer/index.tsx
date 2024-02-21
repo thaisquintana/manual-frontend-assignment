@@ -26,62 +26,118 @@ export const Footer = () => (
         <div>
           <label>Product</label>
           <FeatureList>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'>Popular</a></FeatureListItem>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'>Trending</a></FeatureListItem>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'>Guided</a></FeatureListItem>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'>Products</a></FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                Popular
+              </a>
+            </FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                Trending
+              </a>
+            </FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                Guided
+              </a>
+            </FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                Products
+              </a>
+            </FeatureListItem>
           </FeatureList>
         </div>
         <div>
           <label>Company</label>
           <FeatureList>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'>Press</a></FeatureListItem>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'>Mission</a></FeatureListItem>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'>Strategy</a></FeatureListItem>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'>About</a></FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                Press
+              </a>
+            </FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                Mission
+              </a>
+            </FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                Strategy
+              </a>
+            </FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                About
+              </a>
+            </FeatureListItem>
           </FeatureList>
         </div>
         <div>
           <label>Info</label>
           <FeatureList>
             <FeatureListItem>
-            <a href='#' target='_blank' rel='noopener'> Support </a>
+              <a href="#" target="_blank" rel="noreferrer">
+                {' '}
+                Support{' '}
+              </a>
             </FeatureListItem>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'> Custome Service </a></FeatureListItem>
-            <FeatureListItem><a href='#' target='_blank' rel='noopener'>Get started </a></FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                {' '}
+                Custome Service{' '}
+              </a>
+            </FeatureListItem>
+            <FeatureListItem>
+              <a href="#" target="_blank" rel="noreferrer">
+                Get started{' '}
+              </a>
+            </FeatureListItem>
           </FeatureList>
         </div>
         <div>
           <label>Follow us</label>
           <FeatureListSocial>
             <FeatureListItem>
-            <a href='https://www.facebook.com/MenofManual' target='_blank' rel='noopener'>
-              <Image
-                src="/assets/facebook.svg"
-                alt="facebook icon logo red"
-                width={24}
-                height={24}
-              />
-            </a>
+              <a
+                href="https://www.facebook.com/MenofManual"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/assets/facebook.svg"
+                  alt="facebook icon logo red"
+                  width={24}
+                  height={24}
+                />
+              </a>
             </FeatureListItem>
             <FeatureListItem>
-            <a href='https://google.com/MenofManual' target='_blank' rel='noopener'>
-              <Image
-                src="/assets/google.svg"
-                alt="Google icon logo red"
-                width={24}
-                height={24}
-              />
-            </a>
+              <a
+                href="https://google.com/MenofManual"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/assets/google.svg"
+                  alt="Google icon logo red"
+                  width={24}
+                  height={24}
+                />
+              </a>
             </FeatureListItem>
             <FeatureListItem>
-              <a href='https://twitter.com/MenofManual' target='_blank' rel='noopener'>
-              <Image
-                src="/assets/twitter.svg"
-                alt="Twitter icon logo red"
-                width={24}
-                height={24}
-              />
+              <a
+                href="https://twitter.com/MenofManual"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/assets/twitter.svg"
+                  alt="Twitter icon logo red"
+                  width={24}
+                  height={24}
+                />
               </a>
             </FeatureListItem>
           </FeatureListSocial>

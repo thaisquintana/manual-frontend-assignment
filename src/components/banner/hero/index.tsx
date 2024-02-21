@@ -7,13 +7,9 @@ import {
   HeroBannerHolder
 } from './styles'
 import Image from 'next/image'
-import { CSSProperties } from 'react'
+import { HeroBannerProps } from './types'
 
-export const HeroBanner = (imageStyle: CSSProperties) => {
-  const handleClick = () => {
-    console.log('teste')
-  }
-
+export const HeroBanner = ({ imageStyle, onClick }: HeroBannerProps) => {
   return (
     <HeroBannerSection data-testid="hero-content">
       <HeroBannerHolder>
@@ -32,10 +28,10 @@ export const HeroBanner = (imageStyle: CSSProperties) => {
             Be good <br /> to yourself
           </h1>
           <p>
-            We’re working around the clock to bring you a holistic <br />{' '}
+            We’re working around the clock to bring you a holistic <br />
             approach to your wellness. From top to bottom, inside and out.
           </p>
-          <Button color="#7E0707" onClick={handleClick} text="Take the quiz" />
+          <Button color="#7E0707" onClick={onClick} text="Take the quiz" />
         </HeroBannerContent>
       </HeroBannerHolder>
     </HeroBannerSection>

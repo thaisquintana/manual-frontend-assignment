@@ -3,9 +3,10 @@ import { HeroBanner } from '.'
 import userEvent from '@testing-library/user-event'
 
 describe('<HeroBanner />', () => {
+  const handleClick = jest.fn()
   it('should render correctly', async () => {
     const encodedUrl = encodeURIComponent('/assets/image-herobanner.webp')
-    render(<HeroBanner />)
+    render(<HeroBanner onClick={handleClick} />)
     expect(
       screen.getByRole('heading', { name: /Be good to yourself/i })
     ).toBeInTheDocument()

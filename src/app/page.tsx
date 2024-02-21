@@ -1,13 +1,30 @@
+'use client'
+
 import { HeroBanner } from '@/components/banner/hero'
 import { InfoBanner } from '@/components/banner/info'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
+import { ModalFullScreen } from '@/components/modal/modalFullScreen'
+import { useState } from 'react'
 
 export default function Home() {
+  const [showModal, setShowModal] = useState<boolean>(false)
+
+  const handleShowModal = () => {
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
   return (
     <>
+      {showModal && (
+        <ModalFullScreen showHeader cancelButton={() => closeModal()} />
+      )}
       <Header />
-      <HeroBanner />
+      <HeroBanner onClick={() => handleShowModal()} />
       <InfoBanner
         sectionName={'Hair loss'}
         subtitle={'Hair loss needn’t be irreversible. We can help!'}
