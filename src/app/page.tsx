@@ -19,6 +19,11 @@ export default function Home() {
         imageAlt={'Hair loss Image'}
         numberSection={'01'}
         direction={'left'}
+        positionBottom={183}
+        positionNumberSection={-85}
+        positionLeft={0}
+        positionRight={317}
+        widthText={372}
       />
       <InfoBanner
         sectionName={'Erecetile dysfunction'}
@@ -30,6 +35,11 @@ export default function Home() {
         imageAlt={'Man in peace'}
         numberSection={'02'}
         direction={'right'}
+        positionBottom={147}
+        positionNumberSection={90}
+        positionLeft={289}
+        positionRight={0}
+        widthText={372}
       />
       <Footer />
     </>

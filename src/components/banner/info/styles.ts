@@ -5,6 +5,12 @@ import styled from 'styled-components'
 export const InfoBannerSection = styled.section`
   background-color: #fff;
 
+  @media (min-width: 992px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
   @media (min-width: 1441px) {
     max-width: 1440px;
     margin: 0 auto;
@@ -46,7 +52,7 @@ export const InfoBannerContent = styled.div`
   }
 `
 
-export const InfoBannerContentDetails = styled.div`
+export const InfoBannerContentDetails = styled.div<{ direction: string }>`
   width: 100%;
   padding: 0 16px;
 
@@ -54,12 +60,13 @@ export const InfoBannerContentDetails = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
-  }
-  @media (min-width: 1441px) {
-    padding: 100px 0 0 324px;
+    padding: 0 40px;
   }
 
-  @media (min-width: 1920px) {
+  @media (min-width: 992px) {
+    justify-content: ${(props) => (props.direction === 'left' ? 'right' : 'space-between')};
+    align-items: center;
+    width: 100%;
     padding: 0;
   }
 `
@@ -69,7 +76,6 @@ export const InfoBannerCover = styled.div<{ direction: string }>`
 
   @media (min-width: 768px) {
     display: flex;
-    align-items: baseline;
     position: relative;
     z-index: 1;
     align-items: center;
@@ -78,18 +84,25 @@ export const InfoBannerCover = styled.div<{ direction: string }>`
 export const InfoBannerCoverImage = styled.div<{ direction: string }>`
   img {
     padding: 0 16px;
-    width: 100%;
+    width: 70%;
     height: 100%;
+  }
+
+  @media (min-width: 540px) {
+   img {
+    width: 50%;
+   }
   }
 
   @media (min-width: 768px) {
     order: ${(props) => (props.direction === 'left' ? 1 : 2)};
     img {
       padding: 0;
+      width: 100%;
     }
   }
 `
-export const InfoBannerCoverText = styled.div<{ direction: string }>`
+export const InfoBannerCoverText = styled.div<{ positionNumberSection: number, positionRight: number, direction: string }>`
   display: none;
 
   @media (min-width: 992px) {
@@ -106,11 +119,17 @@ export const InfoBannerCoverText = styled.div<{ direction: string }>`
       letter-spacing: 0.3px;
     }
     z-index: -1;
-    left: ${(props) => (props.direction === 'left' ? '-79px' : '89px')};
-    order: ${(props) => (props.direction === 'left' ? 2 : 1)};
+    left: ${(props) => props.positionNumberSection === 0 ? 'inherit' : `${props.positionNumberSection}px`};
+    order: ${(props) => props.direction === 'left' ? 2 : 1};
+  }
+
+  @media (min-width: 1024px) {
+    right: ${(props) => props.positionRight === 0 ? 'inherit' : `${props.positionRight}px`};
+    left: ${(props) => props.positionNumberSection === 0 ? 'inherit' : `${props.positionNumberSection}px`};
+
   }
 `
-export const InfoBannerDescription = styled.div<{ direction: string }>`
+export const InfoBannerDescription = styled.div<{ positionLeft: number, positionRight: number, positionBottom: number, direction: string }>`
   font-family: TT Norms;
   text-align: left;
   font-weight: 400;
@@ -130,16 +149,14 @@ export const InfoBannerDescription = styled.div<{ direction: string }>`
   @media (min-width: 992px) {
     position: absolute;
     z-index: 2;
-    width: 359px;
     padding: 0 16px;
   }
+
   @media (min-width: 1440px) and (max-width: 1920px) {
-    bottom: ${(props) => (props.direction === 'left' ? '183px' : '147px')};
-    right: ${(props) => (props.direction === 'left' ? '289px' : 'inherit')};
-    left: ${(props) => (props.direction === 'left' ? 'inherit' : '317px')};
+    bottom: ${(props) => props.positionBottom === 0 ? 'inherit' : `${props.positionBottom}px`};
   }
 `
-export const InfoBannerDescriptionSmall = styled.div<{ direction: string }>`
+export const InfoBannerDescriptionSmall = styled.div<{ widthText: number }>`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -156,7 +173,11 @@ export const InfoBannerDescriptionSmall = styled.div<{ direction: string }>`
     color: #0b3b3c;
     letter-spacing: -0.2px;
   }
+
+  @media (min-width: 768px) {
+    width: 89%;
+  }
   @media (min-width: 992px) {
-    width: ${(props) => (props.direction === 'left' ? '372px' : '347px')};
+    width: ${(props) => props.widthText}px;
   }
 `

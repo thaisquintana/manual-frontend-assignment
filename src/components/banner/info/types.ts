@@ -8,6 +8,11 @@ export type InfoBannerProps = {
   sectionName?: string
   subtitle: string
   text: string
-  direction: string
   imageStyle?: CSSProperties
+  direction: string
+  positionBottom: number
+  positionLeft: number
+  positionRight: number
+  widthText: number
+  positionNumberSection: number
 }

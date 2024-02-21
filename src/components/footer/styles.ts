@@ -14,6 +14,7 @@ export const FooterContent = styled.footer`
     display: flex;
     flex-direction: column;
     justify-content: end;
+    margin-top: 40px;
   }
 `
 
@@ -45,6 +46,7 @@ export const FooterLogo = styled.div`
   @media (min-width: 768px) {
     width: 25%;
     padding: 0;
+    text-align: left;
   }
 
   @media (min-width: 1200px) {
@@ -87,6 +89,14 @@ export const FeatureListSocial = styled(FeatureList)`
   gap: 20px;
   justify-content: center;
 
+  li {
+    a {
+      &:hover {
+        filter: saturate(0.5);
+      }
+    }
+  }
+
   @media (min-width: 768px) {
     justify-content: initial;
   }
@@ -100,6 +110,14 @@ export const FeatureListItem = styled.li`
   letter-spacing: 0.3px;
   text-align: center;
   color: #0b3b3c;
+
+  a {
+    text-decoration: none;
+    color: #0b3b3c;
+    &:hover {
+      filter: contrast(0.5);
+    }
+  }
 
   @media (min-width: 768px) {
     text-align: left;
@@ -133,10 +151,6 @@ export const FooterWaterMark = styled.div`
 
     hr {
       width: 680px;
-    }
-
-    p {
-      font-size: 18px;
     }
   }
 

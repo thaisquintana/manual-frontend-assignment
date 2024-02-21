@@ -19,13 +19,18 @@ export const InfoBanner = ({
   sectionName,
   subtitle,
   text,
+  imageStyle,
   direction,
-  imageStyle
+  positionBottom,
+  positionLeft,
+  positionRight,
+  positionNumberSection,
+  widthText
 }: InfoBannerProps) => (
   <InfoBannerSection>
     <InfoBannerContent>
       {title && <h2>{title}</h2>}
-      <InfoBannerContentDetails>
+      <InfoBannerContentDetails direction={direction}>
         {image && (
           <InfoBannerCover direction={direction}>
             <InfoBannerCoverImage direction={direction}>
@@ -38,18 +43,18 @@ export const InfoBanner = ({
                 style={imageStyle}
               />
             </InfoBannerCoverImage>
-            <InfoBannerCoverText direction={direction}>
+            <InfoBannerCoverText positionNumberSection={positionNumberSection} positionRight={positionRight} direction={direction}>
               <p>{numberSection}</p>
             </InfoBannerCoverText>
           </InfoBannerCover>
         )}
-        <InfoBannerDescription direction={direction}>
+        <InfoBannerDescription positionLeft={positionLeft} positionRight={positionRight} positionBottom={positionBottom} direction={direction}>
           {sectionName && (
             <div>
               <span>{sectionName}</span>
             </div>
           )}
-          <InfoBannerDescriptionSmall direction={direction}>
+          <InfoBannerDescriptionSmall widthText={widthText}>
             <div>
               <label>{subtitle}</label>
             </div>

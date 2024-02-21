@@ -11,11 +11,15 @@ export const HeroBannerSection = styled.section`
     height: 580px;
   }
 
+  @media (min-width: 520px) {
+    height: 690px;
+  }
+
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
-    height: auto;
     width: 100%;
+    height: auto;
     align-items: baseline;
     background: conic-gradient(
       from 0.5turn at 50% 30%,
