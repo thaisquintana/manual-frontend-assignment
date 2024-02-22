@@ -17,8 +17,12 @@ import {
 
 export default function Home() {
   const [showModal, setShowModal] = useState<boolean>(false)
-  const [rejectedEvaluation, setRejectedEvaluation] = useState<boolean>(false)
-  const [selectedAnswer, setSelectedAnswer] = useState('')
+  const [selectedAnswer, setSelectedAnswer] = useState({
+    id: '',
+    answer: '',
+    isRejection: false
+  })
+
   const [showResult, setShowResult] = useState<boolean>(false)
   const [quiz, setQuiz] = useState()
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0)
@@ -40,6 +44,7 @@ export default function Home() {
     setCurrentQuestionIndex(0)
     setShowResult(false)
     setShowModal(false)
+    setSelectedAnswer({ id: '', answer: '', isRejection: false })
   }
 
   const handleResultAndStep = () => {
@@ -47,6 +52,12 @@ export default function Home() {
       setShowResult(true)
     }
     setCurrentQuestionIndex(currentQuestionIndex + 1)
+  }
+
+  const handleAnswers = (id: string, answer: string, isRejection: boolean) => {
+    setSelectedAnswer((prev) => {
+      return { ...prev, id, answer, isRejection }
+    })
   }
 
   return (
@@ -58,10 +69,9 @@ export default function Home() {
               <>
                 <CardQuestion
                   data={quiz}
-                  currentQuestionIndex={currentQuestionIndex}
-                  setSelectedAnswer={setSelectedAnswer}
-                  setRejectedEvaluation={setRejectedEvaluation}
                   selectedAnswer={selectedAnswer}
+                  currentQuestionIndex={currentQuestionIndex}
+                  handleAnswers={handleAnswers}
                 />
                 <CardQuestionButtons>
                   <SquareButton
@@ -84,7 +94,7 @@ export default function Home() {
               </>
             ) : (
               <CardResult>
-                {rejectedEvaluation ? (
+                {selectedAnswer?.isRejection === true ? (
                   <div>
                     <p>
                       Unfortunately, we are unable to prescribe this medication

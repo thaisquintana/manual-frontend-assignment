@@ -11,16 +11,8 @@ export const CardQuestion = ({
   data,
   currentQuestionIndex,
   selectedAnswer,
-  setSelectedAnswer,
-  setRejectedEvaluation
+  handleAnswers
 }: QuizState) => {
-  const handleChooseAnswer = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    rejection: boolean
-  ) => {
-    setSelectedAnswer(e.target.value)
-    setRejectedEvaluation(rejection)
-  }
   return (
     <>
       <Card>
@@ -40,14 +32,19 @@ export const CardQuestion = ({
                   <CardListOption>
                     <input
                       type="radio"
-                      name={data?.[currentQuestionIndex]?.type}
-                      value={answer.value || selectedAnswer}
+                      name={answer.value}
+                      value={answer.value}
                       id="option-answer"
-                      onChange={(e) =>
-                        handleChooseAnswer(e, answer.isRejection)
-                      }
+                      checked={selectedAnswer?.answer === String(answer.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => [
+                        handleAnswers(
+                          data?.[currentQuestionIndex]?.id,
+                          e.target.value,
+                          answer.isRejection
+                        )
+                      ]}
                     />
-                    <label>{answer.value}</label>
+                    <label htmlFor="">{answer.value}</label>
                   </CardListOption>
                 </CardListOptionsAnswers>
               )
