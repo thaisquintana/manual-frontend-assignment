@@ -10,10 +10,16 @@ import React from 'react'
 export const CardQuestion = ({
   data,
   currentQuestionIndex,
-  setSelectedAnswer
+  selectedAnswer,
+  setSelectedAnswer,
+  setRejectedEvaluation
 }: QuizState) => {
-  const handleChooseAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChooseAnswer = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    rejection: boolean
+  ) => {
     setSelectedAnswer(e.target.value)
+    setRejectedEvaluation(rejection)
   }
   return (
     <>
@@ -34,10 +40,12 @@ export const CardQuestion = ({
                   <CardListOption>
                     <input
                       type="radio"
-                      name="option-answer"
-                      value={answer.value}
-                      id={answer.value}
-                      onChange={handleChooseAnswer}
+                      name={data?.[currentQuestionIndex]?.type}
+                      value={answer.value || selectedAnswer}
+                      id="option-answer"
+                      onChange={(e) =>
+                        handleChooseAnswer(e, answer.isRejection)
+                      }
                     />
                     <label>{answer.value}</label>
                   </CardListOption>

@@ -92,3 +92,27 @@ export const CardQuestionButtons = styled.div`
     }
   }
 `
+
+export const CardResult = styled.div`
+  width: 100%;
+  text-align: left;
+
+  p {
+    margin: 40px 0;
+    letter-spacing: 0.3px;
+    line-height: 30px;
+    font-family: TT Norms Regular;
+    color: #0b3b3c;
+    font-weight: 400;
+  }
+
+  a {
+    color: #0a886a;
+  }
+
+  @media (min-width: 1200px) {
+    button {
+      float: right;
+    }
+  }
+`

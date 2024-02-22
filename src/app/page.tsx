@@ -10,13 +10,20 @@ import { useState } from 'react'
 import { CardQuestion } from '@/components/quiz/cardQuestion'
 import { QuizState } from '@/types'
 import { SquareButton } from '@/components/button/styles'
-import { CardQuestionButtons } from '@/components/quiz/cardQuestion/styles'
+import {
+  CardQuestionButtons,
+  CardResult
+} from '@/components/quiz/cardQuestion/styles'
 
 export default function Home() {
   const [showModal, setShowModal] = useState<boolean>(false)
+  const [rejectedEvaluation, setRejectedEvaluation] = useState<boolean>(false)
+  const [selectedAnswer, setSelectedAnswer] = useState('')
+  const [showResult, setShowResult] = useState<boolean>(false)
   const [quiz, setQuiz] = useState()
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0)
-  const { isLoading } = useQuery<QuizState>({
+
+  useQuery<QuizState>({
     queryFn: async () => {
       const response = await fetch('http://localhost:3333/questions')
       const data = await response.json()
@@ -25,21 +32,14 @@ export default function Home() {
     }
   })
 
-  const [selectedAnswer, setSelectedAnswer] = useState('')
-
-  console.log(selectedAnswer)
-  const [showResult, setShowResult] = useState<boolean>(false)
-
   const handleShowModal = () => {
     setShowModal(true)
   }
 
   const closeModal = () => {
+    setCurrentQuestionIndex(0)
+    setShowResult(false)
     setShowModal(false)
-  }
-
-  if (isLoading) {
-    return null
   }
 
   const handleResultAndStep = () => {
@@ -60,6 +60,8 @@ export default function Home() {
                   data={quiz}
                   currentQuestionIndex={currentQuestionIndex}
                   setSelectedAnswer={setSelectedAnswer}
+                  setRejectedEvaluation={setRejectedEvaluation}
+                  selectedAnswer={selectedAnswer}
                 />
                 <CardQuestionButtons>
                   <SquareButton
@@ -81,19 +83,43 @@ export default function Home() {
                 </CardQuestionButtons>
               </>
             ) : (
-              <div>
-                show questions
+              <CardResult>
+                {rejectedEvaluation ? (
+                  <div>
+                    <p>
+                      Unfortunately, we are unable to prescribe this medication
+                      for you. This is because finasteride can alter the PSA
+                      levels, which maybe used to monitor for cancer. You should
+                      discuss this further with your GP or specialist if you
+                      would still like this medication.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <div>
+                      <p>
+                        Great news! We have the perfect treatment for your hair
+                        loss. Proceed to{' '}
+                        <a
+                          href="https://www.manual.co/"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          www.manual.co
+                        </a>
+                        , and prepare to say hello to your new hair!
+                      </p>
+                    </div>
+                  </>
+                )}
                 <SquareButton
                   showButton
                   color={'#0b3b3c'}
-                  onClick={() => [
-                    setCurrentQuestionIndex(0),
-                    setShowResult(false)
-                  ]}
+                  onClick={() => closeModal()}
                 >
-                  Do again
+                  Finish
                 </SquareButton>
-              </div>
+              </CardResult>
             )}
           </div>
         </ModalFullScreen>
