@@ -31,7 +31,12 @@ export const HeroBanner = ({ imageStyle, onClick }: HeroBannerProps) => {
             We’re working around the clock to bring you a holistic <br />
             approach to your wellness. From top to bottom, inside and out.
           </p>
-          <Button color="#7E0707" onClick={onClick} text="Take the quiz" />
+          <Button
+            color="#7E0707"
+            onClick={onClick}
+            text="Take the quiz"
+            showButton
+          />
         </HeroBannerContent>
       </HeroBannerHolder>
     </HeroBannerSection>

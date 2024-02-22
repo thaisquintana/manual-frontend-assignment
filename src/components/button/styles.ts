@@ -2,9 +2,13 @@
 
 import styled from 'styled-components'
 
-export const SquareButton = styled.button<{ color: string }>`
+export const SquareButton = styled.button<{
+  color: string
+  showButton: boolean
+}>`
   width: 100%;
   padding: 15px 30px;
+  display: ${(props) => (props.showButton === true ? 'block' : 'none')};
   background-color: ${(props) => props.color};
   border: none;
   color: #fff;

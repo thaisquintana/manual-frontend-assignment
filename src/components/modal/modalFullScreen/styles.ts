@@ -4,17 +4,27 @@ import styled from 'styled-components'
 
 export const ModalContainer = styled.div`
   background-color: #fff;
-  position: absolute;
+  position: fixed;
   width: 100%;
   z-index: 3;
-  height: 133vw;
+  height: 100%;
+  overflow: auto;
+  @media (min-width: 992px) {
+    height: 100vw;
+    overflow: hidden;
+  }
 `
 
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: right;
-  margin: 60px auto 40px;
-  width: 50%;
+  width: 100%;
+  padding: 16px;
+
+  @media (min-width: 992px) {
+    margin: 60px auto 40px;
+    width: 50%;
+  }
 `
 
 export const ModalButton = styled.button`
@@ -27,7 +37,12 @@ export const ModalButton = styled.button`
 
 export const ModalBody = styled.div`
   margin: 0 auto;
-  width: 50%;
+  width: 100%;
+  padding: 0 16px;
+
+  @media (min-width: 992px) {
+    width: 50%;
+  }
 `
 
 export const ModalFooter = styled.div``

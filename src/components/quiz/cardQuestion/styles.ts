@@ -16,18 +16,29 @@ export const Card = styled.div`
   }
 `
 
-export const CardListOptions = styled.ul`
+export const CardListOptions = styled.ul<{ templateColumns: number }>`
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 10px;
-  margin-top: 80px;
+  margin-top: 50px;
+  text-align: left;
+  padding: 0 16px;
+
+  @media (min-width: 992px) {
+    padding: 0;
+    margin-top: 80px;
+    text-align: center;
+    grid-template-columns: ${(props) =>
+      props.templateColumns > 2 ? '1fr 1fr 1fr' : '1fr 1fr'};
+  }
 `
+
 export const CardListOptionsAnswers = styled.li`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   gap: 10px;
 
   label {
@@ -38,8 +49,23 @@ export const CardListOptionsAnswers = styled.li`
     color: #0b3b3c;
   }
 
-  input[type='radio']#option-answer {
-    accent-color: #6d8a83;
+  input {
+    cursor: pointer;
+    &[type='radio']#option-answer {
+      accent-color: #0a886a;
+    }
+  }
+
+  img {
+    width: 80%;
+  }
+
+  @media (min-width: 992px) {
+    justify-content: center;
+
+    img {
+      width: 70%;
+    }
   }
 `
 
@@ -47,4 +73,22 @@ export const CardListOption = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+`
+
+export const CardQuestionButtons = styled.div`
+  display: flex;
+  justify-content: end;
+  height: 50px;
+  margin: 60px 0 60px 10px;
+  gap: 20px;
+
+  button {
+    width: 100%;
+  }
+
+  @media (min-width: 992px) {
+    button {
+      width: 30%;
+    }
+  }
 `

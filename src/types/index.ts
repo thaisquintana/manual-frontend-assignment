@@ -1,5 +1,5 @@
 export type QuizProps = {
-  currentQuestion: number
+  id: string
   question: string
   type: string
   options: Array<QuizAnswersProps>
@@ -7,6 +7,13 @@ export type QuizProps = {
 
 export type QuizAnswersProps = {
   display: string
-  value: boolean
+  value: string
   isRejection: boolean
+}
+
+export type QuizState = {
+  templateColumns?: number
+  data?: Array<QuizProps>
+  currentQuestionIndex: number
+  setSelectedAnswer: (value: string) => void
 }

@@ -8,30 +8,45 @@ import { Header } from '@/components/header'
 import { ModalFullScreen } from '@/components/modal/modalFullScreen'
 import { useState } from 'react'
 import { CardQuestion } from '@/components/quiz/cardQuestion'
-import { QuizProps } from '@/types'
+import { QuizState } from '@/types'
+import { SquareButton } from '@/components/button/styles'
+import { CardQuestionButtons } from '@/components/quiz/cardQuestion/styles'
 
 export default function Home() {
-  const [enabled] = useState(false)
   const [showModal, setShowModal] = useState<boolean>(false)
-  const [questions, setQuestions] = useState<QuizProps>()
-  const [currentQuestion] = useState<number>(0)
-  const [showResult] = useState()
+  const [quiz, setQuiz] = useState()
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0)
+  const { isLoading } = useQuery<QuizState>({
+    queryFn: async () => {
+      const response = await fetch('http://localhost:3333/questions')
+      const data = await response.json()
+      setQuiz(data)
+      return data?.data
+    }
+  })
+
+  const [selectedAnswer, setSelectedAnswer] = useState('')
+
+  console.log(selectedAnswer)
+  const [showResult, setShowResult] = useState<boolean>(false)
 
   const handleShowModal = () => {
     setShowModal(true)
   }
 
-  const { refetch } = useQuery({
-    queryFn: async () => {
-      enabled
-      const response = await fetch('http://localhost:3333/questions')
-      const data = await response.json()
-      return setQuestions(data)
-    }
-  })
-
   const closeModal = () => {
     setShowModal(false)
+  }
+
+  if (isLoading) {
+    return null
+  }
+
+  const handleResultAndStep = () => {
+    if (currentQuestionIndex === 2) {
+      setShowResult(true)
+    }
+    setCurrentQuestionIndex(currentQuestionIndex + 1)
   }
 
   return (
@@ -40,19 +55,51 @@ export default function Home() {
         <ModalFullScreen showHeader cancelButton={() => closeModal()}>
           <div>
             {!showResult ? (
-              <CardQuestion
-                question={questions?.[currentQuestion].question}
-                type={questions?.[currentQuestion].type}
-                options={questions?.[currentQuestion].options}
-              />
+              <>
+                <CardQuestion
+                  data={quiz}
+                  currentQuestionIndex={currentQuestionIndex}
+                  setSelectedAnswer={setSelectedAnswer}
+                />
+                <CardQuestionButtons>
+                  <SquareButton
+                    showButton={Boolean(currentQuestionIndex !== 0)}
+                    color={'#6d8a83'}
+                    onClick={() =>
+                      setCurrentQuestionIndex(currentQuestionIndex - 1)
+                    }
+                  >
+                    Previous
+                  </SquareButton>
+                  <SquareButton
+                    showButton
+                    color={'#0b3b3c'}
+                    onClick={() => handleResultAndStep()}
+                  >
+                    {currentQuestionIndex === 2 ? 'See result' : 'Next'}
+                  </SquareButton>
+                </CardQuestionButtons>
+              </>
             ) : (
-              <div>show questions</div>
+              <div>
+                show questions
+                <SquareButton
+                  showButton
+                  color={'#0b3b3c'}
+                  onClick={() => [
+                    setCurrentQuestionIndex(0),
+                    setShowResult(false)
+                  ]}
+                >
+                  Do again
+                </SquareButton>
+              </div>
             )}
           </div>
         </ModalFullScreen>
       )}
       <Header />
-      <HeroBanner onClick={() => [handleShowModal(), () => refetch()]} />
+      <HeroBanner onClick={() => handleShowModal()} />
       <InfoBanner
         sectionName={'Hair loss'}
         subtitle={'Hair loss needn’t be irreversible. We can help!'}
