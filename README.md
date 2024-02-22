@@ -29,6 +29,7 @@ The local server help to load the quiz using the JSON sugested as requirement.
 - [ ] Better the accessibility;
 - [ ] Add stories for components as documentation;
 - [ ] Improve the logic for quiz;
+- [ ] Write unit test for quiz component;
 - [ ] Build a pipeline om Github Actions;
 
 ## Stack
