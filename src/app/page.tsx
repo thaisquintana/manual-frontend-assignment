@@ -6,9 +6,9 @@ import { InfoBanner } from '@/components/banner/info'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { ModalFullScreen } from '@/components/modal/modalFullScreen'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CardQuestion } from '@/components/quiz/cardQuestion'
-import { QuizState } from '@/types'
+import { QuizState, UserAnswerSelected } from '@/types'
 import { SquareButton } from '@/components/button/styles'
 import {
   CardQuestionButtons,
@@ -17,16 +17,13 @@ import {
 
 export default function Home() {
   const [showModal, setShowModal] = useState<boolean>(false)
-  const [selectedAnswer, setSelectedAnswer] = useState({
-    id: '',
-    answer: '',
-    isRejection: false
-  })
-
+  const [userAnswers, setUserAnswers] = useState<Array<UserAnswerSelected>>([])
+  const [userSelectedAnswer, setUserSelectedAnswer] =
+    useState<UserAnswerSelected>()
   const [showResult, setShowResult] = useState<boolean>(false)
-  const [quiz, setQuiz] = useState()
+  const [quiz, setQuiz] = useState([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0)
-
+  const [hasRejection, setHasRejection] = useState<boolean>(false)
   useQuery<QuizState>({
     queryFn: async () => {
       const response = await fetch('http://localhost:3333/questions')
@@ -44,21 +41,69 @@ export default function Home() {
     setCurrentQuestionIndex(0)
     setShowResult(false)
     setShowModal(false)
-    setSelectedAnswer({ id: '', answer: '', isRejection: false })
+    setUserAnswers([])
+    setHasRejection(false)
+    setUserSelectedAnswer({
+      id: '',
+      answer: '',
+      isRejection: false
+    })
   }
 
   const handleResultAndStep = () => {
+    const hasRejectionValue = userAnswers.filter(
+      (answers) => answers.isRejection === true
+    )
+
     if (currentQuestionIndex === 2) {
       setShowResult(true)
     }
+
+    if (hasRejectionValue?.length) {
+      setHasRejection(true)
+    }
+
     setCurrentQuestionIndex(currentQuestionIndex + 1)
+    setUserSelectedAnswer({
+      id: '',
+      answer: '',
+      isRejection: false
+    })
   }
 
   const handleAnswers = (id: string, answer: string, isRejection: boolean) => {
-    setSelectedAnswer((prev) => {
-      return { ...prev, id, answer, isRejection }
-    })
+    setUserSelectedAnswer({ id, answer, isRejection })
+
+    if (id === userAnswers[currentQuestionIndex]?.id) {
+      setUserAnswers((current) =>
+        current.map((obj) => {
+          if (obj.id === userAnswers[currentQuestionIndex].id) {
+            return {
+              ...obj,
+              answer,
+              isRejection
+            }
+          }
+          return obj
+        })
+      )
+    } else {
+      return setUserAnswers((current) => [
+        ...current,
+        { id, answer, isRejection }
+      ])
+    }
   }
+
+  useEffect(() => {
+    const listAnswer = userAnswers.find(
+      (answerObject) =>
+        answerObject.id === userAnswers[currentQuestionIndex]?.id
+    )
+    if (listAnswer) {
+      setUserSelectedAnswer(listAnswer)
+    }
+  }, [currentQuestionIndex, userAnswers])
 
   return (
     <>
@@ -69,7 +114,7 @@ export default function Home() {
               <>
                 <CardQuestion
                   data={quiz}
-                  selectedAnswer={selectedAnswer}
+                  selectedAnswer={userSelectedAnswer}
                   currentQuestionIndex={currentQuestionIndex}
                   handleAnswers={handleAnswers}
                 />
@@ -94,7 +139,7 @@ export default function Home() {
               </>
             ) : (
               <CardResult>
-                {selectedAnswer?.isRejection === true ? (
+                {hasRejection ? (
                   <div>
                     <p>
                       Unfortunately, we are unable to prescribe this medication
