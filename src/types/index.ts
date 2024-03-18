@@ -15,7 +15,14 @@ export type QuizState = {
   templateColumns?: number
   data?: Array<QuizProps>
   currentQuestionIndex: number
-  selectedAnswer: string
-  setSelectedAnswer: (value: string) => void
-  setRejectedEvaluation: (isRejection: boolean) => void
+  selectedAnswer: UserAnswerSelected | undefined
+  handleAnswers: (id: string, value: string, isRejection: boolean) => void
+  setSelectedAnswer?: ({ id, answer, isRejection }: UserAnswerSelected) => void
+  setRejectedEvaluation?: (isRejection: boolean) => void
+}
+
+export type UserAnswerSelected = {
+  id: string
+  answer: string
+  isRejection: boolean
 }
